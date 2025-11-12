@@ -1,22 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baba Solar | Premium Solar Solutions</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* ======================= ROOT VARIABLES ======================= */
+    .baba-root {
+         --primary: #FFD700;
+          --primary-glow: rgba(255, 215, 0, 0.5); 
+          --secondary: #00C9FF;
+           --dark: #1f2021;
+           --light: #ffffff;
+           --accent: #FF6B00; 
+           --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+             font-family: 'Poppins', sans-serif; 
+            color: var(--light);
+             background: var(--dark);
+              overflow-x: hidden;
+               min-height: 100vh;
+    }
+
+
+
+
+
+
+
+
+
+    .baba-root * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ======================= HERO SECTION ======================= */
+    .baba-hero-section {
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 5%;
+      overflow: hidden;
+      perspective: 1000px;
+    }
+    .baba-video-background {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -3;
+    }
+    .baba-video-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(10,25,47,0.7);
+      z-index: -2;
+    }
+
+    /* ======================= NAVBAR ======================= */
+    .baba-navbar {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 5%;
+      z-index: 10;
+      background: rgba(10,25,47,0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .baba-logo { display: flex; flex-direction: column; align-items: flex-start; }
+    .baba-logo-text {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--light);
+      text-shadow: 0 0 10px var(--primary-glow);
+      line-height: 1;
+    }
+    .baba-logo-text span {
+      color: var(--primary);
+      position: relative;
+    }
+    .baba-logo-text span::after {
+      content: '☀️';
+      position: absolute;
+      top: -5px;
+      right: -25px;
+      font-size: 20px;
+      animation: baba-spin 10s linear infinite;
+    }
+    @keyframes baba-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .baba-logo-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      margin-top: 5px;
+      border-radius: 2px;
+    }
+    .baba-nav-links { display: flex; gap: 35px; }
+    .baba-nav-link {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 8px 0;
+      transition: all 0.3s ease;
+    }
+    .baba-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    .baba-nav-link:hover { color: var(--primary); }
+    .baba-nav-link:hover::after { width: 100%; }
+
+    .baba-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ======================= HERO CONTENT ======================= */
+    .baba-hero-content {
+      text-align: center;
+      max-width: 1000px;
+      z-index: 2;
+      position: relative;
+      margin-top: 60px;
+    }
+    .baba-headline {
+      padding-top: 20%;
+      font-size: 2.7rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 25px;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      animation: baba-headlineEntrance 1.2s cubic-bezier(0.25,0.46,0.45,0.94) both;
+    }
+    @keyframes baba-headlineEntrance {
+      0% { opacity: 0; transform: translateY(50px) scale(0.9); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .baba-headline span {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip:text;
+      color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+    .baba-headline span::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 4px;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: baba-expandLine 1s ease 1s forwards;
+    }
+    @keyframes baba-expandLine { to { transform: scaleX(1); } }
+
+    .baba-subheadline {
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 50px;
+      color: #e0e0e0;
+      animation: baba-fadeInUp 1s ease 0.4s both;
+      position: relative;
+      display: inline-block;
+    }
+    @keyframes baba-fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .baba-cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 60px;
+      animation: baba-fadeInUp 1s ease 0.6s both;
+    }
+    .baba-primary-cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: var(--dark);
+      border: none;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .baba-primary-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255,215,0,0.6); }
+    .baba-secondary-cta {
+      background: transparent;
+      color: var(--light);
+      border: 2px solid var(--glass-border);
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+    }
+    .baba-secondary-cta:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+    /* ======================= STATS SECTION ======================= */
+    .baba-stats-section {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 40px;
+      animation: baba-fadeInUp 1s ease 0.8s both;
+      flex-wrap: wrap;
+    }
+    .baba-stat-card {
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      min-width: 200px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .baba-stat-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border-color: var(--primary);
+    }
+    .baba-stat-value {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .baba-stat-label {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ======================= FLOATING ELEMENTS ======================= */
+    .baba-floating-elements {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .baba-floating-element {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      animation: baba-float 15s infinite ease-in-out;
+    }
+    @keyframes baba-float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(5deg); }
+      66% { transform: translateY(10px) rotate(-5deg); }
+    }
+    .baba-floating-element:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; width: 70px; height: 70px; }
+    .baba-floating-element:nth-child(2) { top: 60%; left: 5%; animation-delay: 2s; }
+    .baba-floating-element:nth-child(3) { top: 30%; right: 10%; animation-delay: 4s; width: 80px; height: 80px; }
+    .baba-floating-element:nth-child(4) { top: 70%; right: 15%; animation-delay: 6s; }
+
+    /* ======================= CURSOR PARTICLES ======================= */
+    .baba-cursor-particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .baba-cursor-particle {
+      position: absolute;
+      width: 6px; height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(1px);
+      opacity: 0.7;
+    }
+
+    /* ======================= MOBILE MENU ======================= */
+    .baba-mobile-menu {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 300px; height: 100vh;
+      background: rgba(10,25,47,0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      transition: right 0.4s ease;
+      padding: 80px 30px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .baba-mobile-menu.active { right: 0; }
+    .baba-mobile-nav-link {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    .baba-mobile-nav-link:hover { color: var(--primary); padding-left: 10px; }
+    .baba-close-menu {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .baba-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .baba-overlay.active { opacity: 1; visibility: visible; }
+
+    /* Responsive Adjustments */
+    @media (max-width:992px) {
+      .baba-nav-links { display: none; }
+      .baba-menu-toggle { display: block; }
+    }
+  </style>
+</head>
+
+<body class="baba-root">
+  <div class="baba-overlay" id="babaOverlay"></div>
+  <div class="baba-mobile-menu" id="babaMobileMenu">
+    <button class="baba-close-menu" id="babaCloseMenu"><i class="fas fa-times"></i></button>
+    <a href="" class="baba-mobile-nav-link">Home</a>
+    <a href="#service" class="baba-mobile-nav-link">Services</a>
+    <a href="#project" class="baba-mobile-nav-link">Projects</a>
+    <a href="#about" class="baba-mobile-nav-link">About Us</a>
+    <a href="#contact" class="baba-mobile-nav-link">Enquiry</a>
+    <a href="#footer" class="baba-mobile-nav-link">Contact</a>
+  </div>
+
+  <div class="baba-cursor-particles" id="babaCursorParticles"></div>
+
+  <section class="baba-hero-section">
+    <video autoplay muted loop class="baba-video-background">
+      <source src="./video/khet.mp4" type="video/mp4">
+    </video>
+    <div class="baba-video-overlay"></div>
+
+    <div class="baba-floating-elements">
+      <div class="baba-floating-element">☀️</div>
+      <div class="baba-floating-element">🔋</div>
+      <div class="baba-floating-element">💡</div>
+      <div class="baba-floating-element">🌍</div>
+    </div>
+
+    <nav class="baba-navbar">
+      <div class="baba-logo">
+        <div class="baba-logo-text">Baba <span>Solar</span></div>
+        <div class="baba-logo-line"></div>
+      </div>
+      <div class="baba-nav-links">
+        <a href="" class="baba-nav-link">Home</a>
+        <a href="#service" class="baba-nav-link">Services</a>
+        <a href="#project" class="baba-nav-link">Projects</a>
+        <a href="#about" class="baba-nav-link">About Us</a>
+        <a href="#contact" class="baba-nav-link">Enquiry</a>
+        <a href="#footer" class="baba-nav-link">Contact</a>
+      </div>
+      <button class="baba-menu-toggle" id="babaMenuToggle"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <div class="baba-hero-content">
+      <h1 class="baba-headline">Powering a Brighter <span>Tomorrow</span> with Solar Energy</h1>
+      <p class="baba-subheadline">
+        Save Money. Save Energy. Save the Planet.<br>
+        <b>powered by</b>
+        <img src="C:\Users\kapse\Desktop\babasolar\babasolarfile\logoad.png" alt="Adani" style="height:30px; vertical-align:middle; margin-left:2px;">
+      </p>
+
+      <div class="baba-cta-buttons">
+  <a href="#contact" class="baba-primary-cta">Enquiry</a>
+  <a href="#service" class="baba-secondary-cta">Services</a>
+</div>
+
+
+      <div class="baba-stats-section">
+        <div class="baba-stat-card"><span class="baba-stat-value">500+</span><span class="baba-stat-label">Happy Clients</span></div>
+        <div class="baba-stat-card"><span class="baba-stat-value">15MW+</span><span class="baba-stat-label">Solar Installed</span></div>
+        <div class="baba-stat-card"><span class="baba-stat-value">₹5Cr+</span><span class="baba-stat-label">Saved by Clients</span></div>
+        <div class="baba-stat-card"><span class="baba-stat-value">24/7</span><span class="baba-stat-label">Support</span></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const cursorParticles = document.getElementById('babaCursorParticles');
+    document.addEventListener('mousemove', (e) => {
+      const particle = document.createElement('div');
+      particle.className = 'baba-cursor-particle';
+      particle.style.left = e.clientX + 'px';
+      particle.style.top = e.clientY + 'px';
+      cursorParticles.appendChild(particle);
+      setTimeout(() => particle.remove(), 1000);
+    });
+
+    const menuToggle = document.getElementById('babaMenuToggle');
+    const closeMenu = document.getElementById('babaCloseMenu');
+    const mobileMenu = document.getElementById('babaMobileMenu');
+    const overlay = document.getElementById('babaOverlay');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+    overlay.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>BABA SOLAR</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-<!--google search console verify   -->
 
-<meta name="google-site-verification" content="m-IAkf0xIbI3R-Kfr8Yc1ulFKjXHLgtMYjVtfCp1SQo" />
-
-
-
-    
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,122 +600,32 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <!-- <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div> -->
-    <!-- Spinner End -->
+   
 
 
-    <!-- Navbar Start -->
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
-                <a href="index.html" class="navbar-brand">
-                    <h1>BABA SOLAR</h1>
-                </a>
-            
-            </nav>
-        </div>
-    </div>
-    <!-- Navbar End -->
+   
 
 
-    <!-- Hero Start -->
     
-<!-- AI HERO START -->
-
-<!-- Hero Start -->
-<div class="container-fluid hero-header bg-light mb-5">
-    <div class="container">
-        <div class="row g-5 align-items-center mb-5">
-            <div class="col-lg-6">
-                <h1 class="display-1 mb-4 animated slideInRight">
-                    We Make homes <span class="text-primary">with</span> Sunlight
-                </h1>
-
-                <!-- Franchise Line -->
-                <h5 class="d-inline-block border border-2 border-white py-3 px-5 mb-3 animated slideInRight">
-                    Revolutionizing Rooftops with Solar Innovation
-                </h5>
-
-                <!-- Powered by Section -->
-                <div class="d-flex align-items-center mt-3 animated fadeIn">
-                    <span class="fw-semibold me-2">Powered by</span>
-                    <img src="./logoad.png" alt="Adani Solar Logo" height="45" class="ms-2">
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="owl-carousel header-carousel animated fadeIn">
-                    <img class="img-fluid" src="img/hero-slider-1.jpg" alt="">
-                    <img class="img-fluid" src="img/hero-slider-2.jpg" alt="">
-                    <img class="img-fluid" src="img/hero-slider-3.jpg" alt="">
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-5 animated fadeIn">
-            <div class="col-md-6 col-lg-3">
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                        <i class="fa fa-solar-panel text-primary"></i>
-                    </div>
-                    <h5 class="lh-base mb-0">High Efficiency Panels</h5>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                        <i class="fa fa-bolt text-primary"></i>
-                    </div>
-                    <h5 class="lh-base mb-0">Sustainable Energy</h5>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                        <i class="fa fa-globe text-primary"></i>
-                    </div>
-                    <h5 class="lh-base mb-0">Eco-Friendly Solutions</h5>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                        <i class="fa fa-rupee-sign text-primary"></i>
-                    </div>
-                    <h5 class="lh-base mb-0">Budget Friendly</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Hero End -->
-
-
-<!--AI HERO END  -->
 <!-- About Start -->
+<section id="about" class="baba-hero-section">
 <div class="container-fluid py-5">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
-                        <img class="img-fluid" src="img/about-1.jpg" alt="Solar Panel Installation">
+                        <img class="img-fluid" src="img/sr1.JPG" alt="Solar Panel Installation">
                     </div>
                     <div class="col-6 wow fadeIn" data-wow-delay="0.3s">
-                        <img class="img-fluid h-75" src="img/about-2.jpg" alt="Solar Energy Solutions">
+                        <img class="img-fluid h-75" src="img/sr2.JPG" alt="Solar Energy Solutions">
                         <div class="h-25 d-flex align-items-center text-center bg-primary px-4">
                             <h4 class="text-white lh-base mb-0">Trusted Solar Experts Since 2010</h4>
                         </div>
@@ -156,15 +635,15 @@
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                 <h1 class="mb-5"><span class="text-uppercase text-primary bg-light px-2">About</span> Our Solar Journey</h1>
                 <p class="mb-4">
-                    We are an authorized <strong>Adani Solar Franchise</strong> providing premium solar panels, inverters, and complete rooftop solutions for homes, businesses, and industries. 
-                    Our mission is to make India energy independent through sustainable and cost-effective solar technology.
+We are a trusted <strong>Adani Solar Partner</strong> providing premium solar panels, inverters, and complete rooftop solutions for homes, businesses, and industries. 
+Our mission is to make India energy independent through sustainable and cost-effective solar technology.
                 </p>
                 <p class="mb-5">
                     With over a decade of expertise, our team has successfully installed more than <strong>1,000+ solar projects</strong> across Maharashtra, helping customers save electricity and earn government subsidies efficiently.
                 </p>
                 <div class="row g-3">
                     <div class="col-sm-6">
-                        <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Authorized Adani Franchise</h6>
+                        <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Premium Solar panels</h6>
                         <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Experienced Engineers</h6>
                     </div>
                     <div class="col-sm-6">
@@ -173,32 +652,47 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-5">
-                    <a class="btn btn-primary px-4 me-2" href="#!">Read More</a>
-                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="https://facebook.com"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="https://twitter.com"><i
-                            class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="https://instagram.com"><i
-                            class="fab fa-instagram"></i></a>
-                    <a class="btn btn-outline-primary btn-square border-2" href="https://linkedin.com"><i
-                            class="fab fa-linkedin-in"></i></a>
-                </div>
+    <!-- Social Media Links -->
+    <a class="btn btn-outline-primary btn-square border-2 me-2" 
+       href="https://www.facebook.com/share/1CxuKmnLw8/?mibextid=wwXIfr" 
+       target="_blank">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a class="btn btn-outline-primary btn-square border-2 me-2" 
+       href="https://www.instagram.com/babaagrotraders?igsh=MXFyZ2hkZ3c5enJtOA==" 
+       target="_blank">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a class="btn btn-outline-primary btn-square border-2 me-2" 
+       href="https://www.instagram.com/babaagrotraders?igsh=MXFyZ2hkZ3c5enJtOA==" 
+       target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a class="btn btn-outline-primary btn-square border-2" 
+       href="https://www.instagram.com/babaagrotraders?igsh=MXFyZ2hkZ3c5enJtOA==" 
+       target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+</div>
+
             </div>
         </div>
     </div>
 </div>
+</section>
 <!-- About End -->
 
 
 
 <!-- Service Start -->
+ <section id="service" class="baba-hero-section">
 <div class="container-fluid py-5">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
                 <h1 class="mb-5">Our <span class="text-uppercase text-primary bg-light px-2">Solar Services</span></h1>
                 <p>
-                    We provide Complete solar energy solutions — from consultation to installation and maintenance. 
+                    We provide complete solar energy solutions — from consultation to installation and maintenance. 
                     As an <strong>authorized Adani Solar partner</strong>, we ensure top-quality products and efficient service 
                     for homes, businesses, and industries.
                 </p>
@@ -212,7 +706,7 @@
                     </div>
                     <div class="px-3">
                         <h3>+91 98765 43210</h3>
-                        <span>Call us anytime for a free solar consultation</span>
+                        <span style="color: black;">Call us anytime for a free solar consultation</span>
                     </div>
                 </div>
             </div>
@@ -254,7 +748,7 @@
                     <div class="col-md-6 wow fadeIn" data-wow-delay="0.8s">
                         <div class="service-item h-100 d-flex flex-column justify-content-center bg-primary">
                             <a href="#!" class="service-img position-relative mb-4">
-                                <img class="img-fluid w-100" src="img/service-4.jpg" alt="Solar Consultation Service">
+                                <img class="img-fluid w-100" src="./img/service-6.jpg" alt="Solar Consultation Service">
                                 <h3>Solar Consultation & Subsidy Help</h3>
                             </a>
                             <p class="mb-0">
@@ -267,6 +761,7 @@
         </div>
     </div>
 </div>
+</section>
 <!-- Service End -->
 
 
@@ -315,6 +810,7 @@
 
 
 <!-- Project Start -->
+ <section id="project" class="baba-hero-section">
 <div class="container-fluid mt-5">
     <div class="container mt-5">
         <div class="row g-0">
@@ -328,7 +824,7 @@
                 <div class="row g-0">
                     <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
                         <div class="project-item position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/project-1.jpg" alt="Residential Rooftop Solar">
+                            <img class="img-fluid w-100" src="img/ewwrf.jpg" alt="Residential Rooftop Solar">
                             <a class="project-overlay text-decoration-none" href="#!">
                                 <h4 class="text-white">Residential Rooftop</h4>
                                 <small class="text-white">250+ Installations</small>
@@ -337,7 +833,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                         <div class="project-item position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/project-2.jpg" alt="Commercial Solar Plant">
+                            <img class="img-fluid w-100" src="img/service-2.jpg" alt="Commercial Solar Plant">
                             <a class="project-overlay text-decoration-none" href="#!">
                                 <h4 class="text-white">Commercial Buildings</h4>
                                 <small class="text-white">180+ Projects</small>
@@ -346,7 +842,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.4s">
                         <div class="project-item position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/project-3.jpg" alt="Industrial Solar Setup">
+                            <img class="img-fluid w-100" src="img/service-3.jpg" alt="Industrial Solar Setup">
                             <a class="project-overlay text-decoration-none" href="#!">
                                 <h4 class="text-white">Industrial Setups</h4>
                                 <small class="text-white">90+ Completed</small>
@@ -355,7 +851,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                         <div class="project-item position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/project-4.jpg" alt="Solar Water Pump Installation">
+                            <img class="img-fluid w-100" src="img/solarwater.jpg" alt="Solar Water Pump Installation">
                             <a class="project-overlay text-decoration-none" href="#!">
                                 <h4 class="text-white">Solar Water Pumps</h4>
                                 <small class="text-white">120+ Installed</small>
@@ -364,7 +860,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.6s">
                         <div class="project-item position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/project-5.jpg" alt="Government Solar Projects">
+                            <img class="img-fluid w-100" src="img/govpro.jpg" alt="Government Solar Projects">
                             <a class="project-overlay text-decoration-none" href="#!">
                                 <h4 class="text-white">Government Projects</h4>
                                 <small class="text-white">35+ Sites</small>
@@ -373,7 +869,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.7s">
                         <div class="project-item position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/project-6.jpg" alt="Solar Street Lights">
+                            <img class="img-fluid w-100" src="img/stretlamp.jpg" alt="Solar Street Lights">
                             <a class="project-overlay text-decoration-none" href="#!">
                                 <h4 class="text-white">Solar Street Lights</h4>
                                 <small class="text-white">300+ Installed</small>
@@ -385,6 +881,7 @@
         </div>
     </div>
 </div>
+</section>
 <!-- Project End -->
 
 
@@ -460,7 +957,7 @@
     <section class="section-padding bg-light" id="calculator">
         <div class="container">
             <div class="section-title">
-                                <h1 class="mb-5"><span class="text-uppercase text-primary bg-light px-2">Solar</span>Savings Calculator</h1>
+                                <h1 class="mb-5"><span class="text-uppercase text-primary bg-light px-2">Solar Savings Calculator</span></h1>
                 <p>Discover how much you can save by switching to solar energy</p>
             </div>
             <div class="row justify-content-center">
@@ -528,7 +1025,7 @@
     <section class="section-padding bg-light" id="faq">
         <div class="container">
             <div class="section-title">
-            <h1 class="mb-5"><span class="text-uppercase text-primary bg-light px-2">Frequently</span>Asked questions ?</h1>
+            <h1 class="mb-5"><span class="text-uppercase text-primary bg-light px-2">Frequently Asked questions ?</span></h1>
                 <p>Find answers to common questions about solar energy and our services</p>
             </div>
             <div class="row justify-content-center">
@@ -680,7 +1177,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Solar Installation">
+                        <img src="./img/ga4.jpg" alt="Solar Installation">
                         <div class="gallery-overlay">
                             <h5>Residential Rooftop Installation</h5>
                         </div>
@@ -688,21 +1185,54 @@
                 </div>
                 <div class="col-md-4">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Rooftop Solar">
+                        <img src="./img/sr1.JPG" alt="Rooftop Solar">
                         <div class="gallery-overlay">
-                            <h5>Commercial Solar Project</h5>
+                            <h5>Shop</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Commercial Installation">
+                        <img src="./img/sr2.JPG" alt="Commercial Installation">
                         <div class="gallery-overlay">
-                            <h5>Industrial Solar Farm</h5>
+                            <h5>Shop</h5>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="./img/IMG_3202.jpg" alt="Solar Installation">
+                        <div class="gallery-overlay">
+                            <h5>Residential Rooftop Installation</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="./img/IMG_3196.jpg" alt="Rooftop Solar">
+                        <div class="gallery-overlay">
+                            <h5>Shop</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="./img/ewwrf.jpg" alt="Commercial Installation">
+                        <div class="gallery-overlay">
+                            <h5>Shop</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -819,74 +1349,85 @@
 
 
     <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-9">
-                    <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.2s">
-                        <div class="testimonial-item">
-                            <div class="row g-5 align-items-center">
-                                <div class="col-md-6">
-                                    <div class="testimonial-img">
-                                        <img class="img-fluid" src="img/testimonial-1.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="testimonial-text pb-5 pb-md-0">
-                                        <h3>Sustainable Material</h3>
-                                        <p>Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed
-                                            stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna
-                                            dolore erat
-                                            amet</p>
-                                        <h5 class="mb-0">Boris Johnson</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="row g-5 align-items-center">
-                                <div class="col-md-6">
-                                    <div class="testimonial-img">
-                                        <img class="img-fluid" src="img/testimonial-2.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="testimonial-text pb-5 pb-md-0">
-                                        <h3>Customer Satisfaction</h3>
-                                        <p>Clita erat ipsum et lorem et sit, sed
-                                            stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna
-                                            dolore erat
-                                            amet</p>
-                                        <h5 class="mb-0">Alexander Bell</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="row g-5 align-items-center">
-                                <div class="col-md-6">
-                                    <div class="testimonial-img">
-                                        <img class="img-fluid" src="img/testimonial-3.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="testimonial-text pb-5 pb-md-0">
-                                        <h3>Budget Friendly</h3>
-                                        <p>Diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed
-                                            stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna
-                                            dolore erat
-                                            amet</p>
-                                        <h5 class="mb-0">Bradley Gordon</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- Testimonial Start -->
+<div class="container-xxl py-5">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-9">
+        <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.2s">
+          
+          <!-- Testimonial 1 -->
+          <div class="testimonial-item">
+            <div class="row g-5 align-items-center">
+              <div class="col-md-6">
+                <div class="testimonial-img">
+                  <img class="img-fluid" src="img/testimonial-1.jpg" alt="Solar Panel Installation">
                 </div>
+              </div>
+              <div class="col-md-6">
+                <div class="testimonial-text pb-5 pb-md-0">
+                  <h3>Reliable Solar Installation</h3>
+                  <p>
+                    “Baba Solar’s team handled our 5KW rooftop installation professionally.  
+                    They completed everything within the promised time and even guided us  
+                    through subsidy documentation. Our monthly electricity bill has reduced by nearly 80%!”
+                  </p>
+                  <h5 class="mb-0">Rahul Deshmukh</h5>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-item">
+            <div class="row g-5 align-items-center">
+              <div class="col-md-6">
+                <div class="testimonial-img">
+                  <img class="img-fluid" src="img/testimonial-2.jpg" alt="Customer review">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="testimonial-text pb-5 pb-md-0">
+                  <h3>Exceptional After-Sales Support</h3>
+                  <p>
+                    “After installation, I had a few queries about inverter performance.  
+                    The Baba Solar support team responded instantly on WhatsApp and resolved everything.  
+                    Their service is trustworthy and customer-centric.”
+                  </p>
+                  <h5 class="mb-0">Sneha Patil</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-item">
+            <div class="row g-5 align-items-center">
+              <div class="col-md-6">
+                <div class="testimonial-img">
+                  <img class="img-fluid" src="img/testimonial-3.jpg" alt="Happy customer">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="testimonial-text pb-5 pb-md-0">
+                  <h3>Cost-Effective & Efficient</h3>
+                  <p>
+                    “I compared several vendors before choosing Baba Solar.  
+                    They offered the best price for high-quality Adani panels.  
+                    My system works perfectly even in cloudy weather and I’m saving big on bills.”
+                  </p>
+                  <h5 class="mb-0">Amit Kulkarni</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
+      </div>
     </div>
-    <!-- Testimonial End -->
+  </div>
+</div>
+<!-- Testimonial End -->
 
 
     <!-- Newsletter Start -->
@@ -913,35 +1454,9 @@
         </div>
     </div>
     <!-- Newsletter End -->
-<!--tags start  -->
-<section>  
-  <h1>Tags:-</h1>
-  <h1>Baba Solar Washim | Best Solar Panel Installation Company</h1>
-<h1>Solar Panel Installation in Washim and Karanja Lad</h1>
-<h1>Trusted Solar Energy Company in Washim, Maharashtra</h1>
-<h1>Rooftop Solar Systems in Washim and Nearby Areas</h1>
-<h1>Affordable Solar Power Solutions in Karanja Lad</h1>
-<h1>Best Solar Company in Washim District</h1>
-<h1>Solar Panel Dealer and Installer in Washim</h1>
-<h1>solar washim adani .</h1>
-<h1>Renewable Energy Experts in Washim and Karanja Lad</h1>
-<h1>Buy Solar Panels in Washim | Baba Solar</h1>
-<h1>solar panel washim</h1>
-<h1>Government Approved Solar Panel Company in Washim</h1>
-<h1>solar shop washim ,karanja lad.</h1>
-<h1>Solar Power for Homes and Businesses in Washim</h1>
-<h1>Top Rated Solar Energy Solutions in Washim</h1>
-<h1>Clean and Affordable Solar Energy in Karanja Lad</h1>
-<h1>Professional Solar Installation Services in Washim</h1>
-<h1>Leading Solar Panel Supplier in Washim and Maharashtra</h1>
 
-
-</section>
-
-
-    <!-- tags end  -->
 <!-- Footer Start -->
-<div class="container-fluid bg-dark text-white-50 footer pt-5">
+<div id="footer" class="container-fluid bg-dark text-white-50 footer pt-5">
     <div class="container py-5">
         <div class="row g-5">
             <!-- About -->
@@ -956,14 +1471,14 @@
             <!-- Contact -->
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
                 <h5 class="text-white mb-4">Get In Touch</h5>
-                <p><i class="fa fa-map-marker-alt me-3"></i>123 patni complex, India</p>
-                <p><i class="fa fa-phone-alt me-3"></i>+91 98765 43210</p>
-                <p><i class="fa fa-envelope me-3"></i>info@babstudui.in</p>
+                <p><i class="fa fa-map-marker-alt me-3"></i>Mangrulpir Road, Near Salasar Mangal Karyalay, Karanja (Lad), Maharashtra.444105</p>
+                <p><i class="fa fa-phone-alt me-3"></i>9604620074, 9168206782, 7823883845</p>
+                <p><i class="fa fa-envelope me-3"></i>babaagrotraderskaranja@gmail.com</p>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="https://www.instagram.com/babaagrotraders?igsh=MXFyZ2hkZ3c5enJtOA=="><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="https://www.instagram.com/babaagrotraders?igsh=MXFyZ2hkZ3c5enJtOA=="><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="https://www.instagram.com/babaagrotraders?igsh=MXFyZ2hkZ3c5enJtOA=="><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-primary btn-square border-2 me-2" href="https://www.instagram.com/babaagrotraders?igsh=MXFyZ2hkZ3c5enJtOA=="><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
 
@@ -980,11 +1495,11 @@
             <!-- Services -->
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                 <h5 class="text-white mb-4">Our Services</h5>
-                <a class="btn btn-link" href="#">Interior Design</a>
-                <a class="btn btn-link" href="#">Project Planning</a>
-                <a class="btn btn-link" href="#">Renovation</a>
-                <a class="btn btn-link" href="#">Implementation</a>
-                <a class="btn btn-link" href="#">Landscape Design</a>
+                <a class="btn btn-link" href="#">Residential Solar</a>
+                <a class="btn btn-link" href="#">Commercial Solar</a>
+                <a class="btn btn-link" href="#">Solar Street Lamp</a>
+                <a class="btn btn-link" href="#">Solar Water Pump</a>
+                <a class="btn btn-link" href="#">Goverment Projects</a>
             </div>
         </div>
     </div>
@@ -1602,23 +2117,35 @@
         }
 
         // Inquiry Form Submission
-        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Here you would typically send the form data to a server
-            // For demonstration, we'll just show an alert and reset the form
-            alert('Thank you for your inquiry, ' + name + '! We will contact you within 24 hours.');
-            document.getElementById('inquiryForm').reset();
-            
-            // Optionally redirect to WhatsApp with form data
-            // const whatsappMessage = `Hello, I'm interested in solar solutions.%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AMessage: ${message}`;
-            // window.open(`https://wa.me/919876543210?text=${whatsappMessage}`, '_blank');
-        });
+document.getElementById("inquiryForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const whatsappNumber = "919876543210"; // ← apna WhatsApp number yaha daalo
+
+  const text = `📩 *New Solar Inquiry!*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n✉️ Email: ${email}\n💬 Message: ${message}\n\nPlease follow up with this client.`;
+
+  const encodedText = encodeURIComponent(text);
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+  window.open(whatsappURL, "_blank");
+
+  document.getElementById("inquiryForm").reset(); // optional: clear form after sending
+});
+
+
+
+
+
+
+
+
+
+
+
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
