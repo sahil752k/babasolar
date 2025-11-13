@@ -1085,247 +1085,251 @@
 
 
 
-    <!-- calci new start -->
-    
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Baba Calculators - EMI & Solar</title>
 
-  <style>
-  /* --- PAGE / RESET --- */
-  html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;}
-  body{background:#0f1720;color:#0b1220;padding:18px;}
 
-  /* --- SCOPED CSS (ONLY applies inside #baba-calcs ) --- */
-  #baba-calcs { max-width:1100px; margin:0 auto; }
+    <!--   CALCULATORS START        -->
+<!-- ========================== -->
 
-  #baba-calcs .card {
-    background:#fff;
-    padding:20px;
-    border-radius:14px;
-    margin-bottom:25px;
-    box-shadow:0 4px 16px rgba(0,0,0,0.08);
-  }
+<div id="baba-calcs" style="padding:20px;">
 
-  #baba-calcs .title {
-    font-size:20px;
-    font-weight:800;
-    color:#005bea;
-    margin-bottom:15px;
-  }
+<style>
+/* --- SCOPED CSS (ONLY applies inside #baba-calcs ) --- */
 
-  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+#baba-calcs .card {
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:25px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.08);
+}
 
-  @media(max-width:900px){
-    .grid { grid-template-columns:1fr; }
-  }
+#baba-calcs .title {
+  font-size:20px;
+  font-weight:800;
+  color:#005bea;
+  margin-bottom:15px;
+}
 
-  #baba-calcs .field { display:flex; flex-direction:column; margin-bottom:12px; }
-  #baba-calcs label { font-weight:700; margin-bottom:4px; font-size:13px; }
-  #baba-calcs input, #baba-calcs select {
-    padding:10px; border-radius:8px; border:1px solid #dce6ff; width:100%; font-size:14px;
-  }
+#baba-calcs .grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
 
-  #baba-calcs .btn {
-    width:100%; padding:12px; margin-top:10px; border:0; border-radius:8px; cursor:pointer;
-    font-weight:800; color:white; background:#0061ff; font-size:15px;
-  }
-  #baba-calcs .btn.secondary { background:#34b465; }
+@media(max-width:900px){
+  #baba-calcs .grid { grid-template-columns:1fr; }
+}
 
-  #baba-calcs .result {
-    display:none; background:#f3f8ff; border:1px solid #d8e8ff; padding:15px; margin-top:16px;
-    border-radius:10px;
-  }
+#baba-calcs .field { 
+  display:flex; 
+  flex-direction:column; 
+  margin-bottom:12px; 
+}
 
-  #baba-calcs .row { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed #ccc; }
-  #baba-calcs .label { font-weight:700; font-size:14px; }
-  #baba-calcs .val { font-weight:800; color:#005bea; font-size:14px; }
+#baba-calcs label { font-weight:700; margin-bottom:4px; }
 
-  /* TABLE - responsive adjustments */
-  .table-responsive { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:8px; }
-  #baba-calcs table { width:100%; border-collapse:collapse; background:white; margin-top:14px; min-width:620px; }
-  #baba-calcs th {
-    background:#e6f0ff; padding:10px 12px; text-align:left; font-weight:800; font-size:14px;
-    white-space:nowrap;
-  }
-  #baba-calcs td {
-    padding:10px 12px; border-bottom:1px solid #eee; font-size:14px;
-    white-space:nowrap;
-  }
+#baba-calcs input, 
+#baba-calcs select {
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #dce6ff;
+  width:100%;
+}
 
-  /* Small screen tweaks */
-  @media(max-width:480px){
-    #baba-calcs .card { padding:14px; border-radius:10px; }
-    #baba-calcs .title { font-size:18px; }
-    #baba-calcs input, #baba-calcs select { padding:8px; font-size:13px; }
-    #baba-calcs .btn { padding:10px; font-size:14px; }
-    #baba-calcs th, #baba-calcs td { padding:8px 10px; font-size:13px; }
-    /* allow horizontal scroll for table container - keeps table intact */
-    .table-responsive { margin-left:-6px; margin-right:-6px; padding:6px 6px; }
-  }
+#baba-calcs .btn {
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:800;
+  color:white;
+  background:#0061ff;
+}
 
-  /* Optional: zebra rows for readability */
-  #baba-calcs tbody tr:nth-child(odd) td { background:#fff; }
-  #baba-calcs tbody tr:nth-child(even) td { background:#fbfdff; }
+#baba-calcs .result {
+  display:none;
+  background:#f3f8ff;
+  border:1px solid #d8e8ff;
+  padding:15px;
+  margin-top:16px;
+  border-radius:10px;
+}
 
-  /* misc */
-  .muted { color:#6b7280; font-weight:600; font-size:13px; }
-  </style>
-</head>
-<body>
+#baba-calcs .row {
+  display:flex;
+  justify-content:space-between;
+  padding:6px 0;
+  border-bottom:1px dashed #ccc;
+}
 
-<div id="baba-calcs" style="padding:8px;">
+#baba-calcs .label { font-weight:700; }
+#baba-calcs .val { font-weight:800; color:#005bea; }
+
+/* TABLE RESPONSIVE FIX */
+#baba-calcs .table-wrapper{
+  width:100%;
+  overflow-x:auto;
+}
+
+#baba-calcs table {
+  width:100%;
+  min-width:600px;
+  border-collapse:collapse;
+  background:white;
+  margin-top:14px;
+}
+
+#baba-calcs th {
+  background:#e6f0ff;
+  padding:8px;
+  text-align:left;
+  white-space:nowrap;
+}
+
+#baba-calcs td {
+  padding:8px;
+  border-bottom:1px solid #eee;
+  white-space:nowrap;
+}
+</style>
+
+
+<div class="grid">
+
+<!-- ======================================= -->
+<!--           EMI CALCULATOR                -->
+<!-- ======================================= -->
+<div class="card">
+  <div class="title">EMI Calculator</div>
+
+  <div class="field">
+    <label>Loan Amount (₹)</label>
+    <input id="emi_loan" type="number" value="500000">
+  </div>
 
   <div class="grid">
-
-  <!-- ======================================= -->
-  <!--           EMI CALCULATOR                -->
-  <!-- ======================================= -->
-  <div class="card">
-    <div class="title">EMI Calculator</div>
-
     <div class="field">
-      <label>Loan Amount (₹)</label>
-      <input id="emi_loan" type="number" value="500000" min="0">
+      <label>Interest Rate (%)</label>
+      <input id="emi_rate" type="number" value="10">
     </div>
-
-    <div class="grid">
-      <div class="field">
-        <label>Interest Rate (%)</label>
-        <input id="emi_rate" type="number" value="10" step="0.01" min="0">
-      </div>
-      <div class="field">
-        <label>Tenure (Years)</label>
-        <input id="emi_years" type="number" value="5" min="1">
-      </div>
-    </div>
-
-    <button class="btn" onclick="calcEMI()">Calculate EMI</button>
-
-    <div id="emi_result" class="result">
-
-      <div class="row"><div class="label">Monthly EMI:</div><div class="val" id="emi_month"></div></div>
-      <div class="row"><div class="label">Total Interest:</div><div class="val" id="emi_interest"></div></div>
-      <div class="row"><div class="label">Total Payment:</div><div class="val" id="emi_total"></div></div>
-
-      <!-- responsive wrapper -->
-      <div class="table-responsive" aria-hidden="false">
-        <table id="emi_table" role="table" aria-label="EMI amortization table">
-          <thead>
-            <tr><th>Year</th><th>Interest</th><th>Principal</th><th>Balance</th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <div style="margin-top:8px;display:flex;gap:8px;">
-        <button class="btn secondary" onclick="exportEMICSV()" style="width:auto;padding:8px 12px;">Export CSV</button>
-        <div class="muted" style="align-self:center;">Tip: swipe table left/right on mobile</div>
-      </div>
-
+    <div class="field">
+      <label>Tenure (Years)</label>
+      <input id="emi_years" type="number" value="5">
     </div>
   </div>
 
-  <!-- ======================================= -->
-  <!--       SOLAR SAVING CALCULATOR          -->
-  <!-- ======================================= -->
-  <div class="card">
-    <div class="title">Solar Saving Calculator</div>
+  <button class="btn" onclick="calcEMI()">Calculate EMI</button>
 
-    <div class="field">
-      <label>Monthly Electricity Bill (₹)</label>
-      <input id="sol_bill" type="number" value="3000" min="0">
+  <div id="emi_result" class="result">
+
+    <div class="row"><div class="label">Monthly EMI:</div><div class="val" id="emi_month"></div></div>
+    <div class="row"><div class="label">Total Interest:</div><div class="val" id="emi_interest"></div></div>
+    <div class="row"><div class="label">Total Payment:</div><div class="val" id="emi_total"></div></div>
+
+    <div class="table-wrapper">
+      <table id="emi_table">
+        <thead>
+          <tr><th>Year</th><th>Interest</th><th>Principal</th><th>Balance</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
 
-    <div class="field">
-      <label>Monthly Units (kWh)</label>
-      <input id="sol_units" type="number" value="250" min="0">
-    </div>
+  </div>
+</div>
 
-    <div class="field">
-      <label>Rooftop Area (sqft)</label>
-      <input id="sol_area" type="number" value="200" min="0">
-    </div>
 
-    <div class="field">
-      <label>Roof Direction</label>
-      <select id="sol_dir">
-        <option value="1">South (Best)</option>
-        <option value="0.95">South-East</option>
-        <option value="0.95">South-West</option>
-        <option value="0.90">West</option>
-        <option value="0.85">East</option>
-        <option value="0.60">North</option>
-      </select>
-    </div>
 
-    <button class="btn" onclick="calcSolar()">Calculate Savings</button>
+<!-- ======================================= -->
+<!--       SOLAR SAVING CALCULATOR          -->
+<!-- ======================================= -->
+<div class="card">
+  <div class="title">Solar Saving Calculator</div>
 
-    <div id="sol_result" class="result">
-
-      <div class="row"><div class="label">System Size:</div><div class="val" id="sol_kw"></div></div>
-      <div class="row"><div class="label">Panels Needed:</div><div class="val" id="sol_panels"></div></div>
-      <div class="row"><div class="label">Monthly Generation:</div><div class="val" id="sol_gen"></div></div>
-      <div class="row"><div class="label">Monthly Saving:</div><div class="val" id="sol_saving"></div></div>
-      <div class="row"><div class="label">Yearly Saving:</div><div class="val" id="sol_yearly"></div></div>
-      <div class="row"><div class="label">New Bill:</div><div class="val" id="sol_newbill"></div></div>
-      <div class="row"><div class="label">Bill Reduction:</div><div class="val" id="sol_percent"></div></div>
-
-      <div class="table-responsive">
-        <table id="sol_table">
-          <thead>
-            <tr><th>Year</th><th>Annual Gen</th><th>Saving</th><th>Cumulative</th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-    </div>
+  <div class="field">
+    <label>Monthly Electricity Bill (₹)</label>
+    <input id="sol_bill" type="number" value="3000">
   </div>
 
-  </div> <!-- grid end -->
+  <div class="field">
+    <label>Monthly Units (kWh)</label>
+    <input id="sol_units" type="number" value="250">
+  </div>
+
+  <div class="field">
+    <label>Rooftop Area (sqft)</label>
+    <input id="sol_area" type="number" value="200">
+  </div>
+
+  <div class="field">
+    <label>Roof Direction</label>
+    <select id="sol_dir">
+      <option value="1">South (Best)</option>
+      <option value="0.95">South-East</option>
+      <option value="0.95">South-West</option>
+      <option value="0.90">West</option>
+      <option value="0.85">East</option>
+      <option value="0.60">North</option>
+    </select>
+  </div>
+
+  <button class="btn" onclick="calcSolar()">Calculate Savings</button>
+
+  <div id="sol_result" class="result">
+
+    <div class="row"><div class="label">System Size:</div><div class="val" id="sol_kw"></div></div>
+    <div class="row"><div class="label">Panels Needed:</div><div class="val" id="sol_panels"></div></div>
+    <div class="row"><div class="label">Monthly Generation:</div><div class="val" id="sol_gen"></div></div>
+    <div class="row"><div class="label">Monthly Saving:</div><div class="val" id="sol_saving"></div></div>
+    <div class="row"><div class="label">Yearly Saving:</div><div class="val" id="sol_yearly"></div></div>
+    <div class="row"><div class="label">New Bill:</div><div class="val" id="sol_newbill"></div></div>
+    <div class="row"><div class="label">Bill Reduction:</div><div class="val" id="sol_percent"></div></div>
+
+    <div class="table-wrapper">
+      <table id="sol_table">
+        <thead>
+          <tr><th>Year</th><th>Annual Gen</th><th>Saving</th><th>Cumulative</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+</div> <!-- grid end -->
 
 </div> <!-- #baba-calcs end -->
+
+
 
 <!-- ============================= -->
 <!--       JAVASCRIPT BEGIN        -->
 <!-- ============================= -->
 <script>
-/* =======================================================
-   EMI CALCULATOR (unchanged logic but kept robust)
-   ====================================================== */
 
-let emiData = [];
+/* =======================================================
+   EMI CALCULATOR
+=======================================================*/
 
 function calcEMI() {
-    const P = Number(document.getElementById("emi_loan").value) || 0;
-    const annualRate = Number(document.getElementById("emi_rate").value) || 0;
-    const years = Number(document.getElementById("emi_years").value) || 0;
 
-    if (P <= 0 || years <= 0) {
-      alert("Enter valid loan amount and tenure.");
-      return;
-    }
+    const P = Number(document.getElementById("emi_loan").value);
+    const r = Number(document.getElementById("emi_rate").value)/1200;
+    const n = Number(document.getElementById("emi_years").value) * 12;
 
-    const r = annualRate / 1200; // monthly rate
-    const n = years * 12;
-
-    // handle zero-interest (simple division)
-    const EMI = (r === 0) ? (P / n) : (P * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1));
+    const EMI = P * r * (1+r)**n / ((1+r)**n - 1);
 
     let balance = P;
-    emiData = [];
     let yearly = [];
 
     let yInt = 0, yPri = 0;
+
     for(let m=1; m<=n; m++){
         const interest = balance * r;
         const principal = EMI - interest;
-
-        emiData.push({month:m, interest, principal, balance});
 
         yInt += interest;
         yPri += principal;
@@ -1340,76 +1344,57 @@ function calcEMI() {
                 principal: yPri,
                 balance
             });
-            yInt = 0; yPri = 0;
+            yInt = 0; 
+            yPri = 0;
         }
 
         if(balance <= 0) break;
     }
 
-    // totals
-    const totalInterest = yearly.reduce((a,b)=>a+b.interest,0);
-    const totalPayment = P + totalInterest;
+    document.getElementById("emi_month").innerText = "₹"+EMI.toFixed(0);
+    document.getElementById("emi_interest").innerText = "₹"+yearly.reduce((a,b)=>a+b.interest,0).toFixed(0);
+    document.getElementById("emi_total").innerText = "₹"+(P+yearly.reduce((a,b)=>a+b.interest,0)).toFixed(0);
 
-    document.getElementById("emi_month").innerText = "₹"+Number(EMI).toFixed(0);
-    document.getElementById("emi_interest").innerText = "₹"+Number(totalInterest).toFixed(0);
-    document.getElementById("emi_total").innerText = "₹"+Number(totalPayment).toFixed(0);
-
-    // populate table
     let tbody = document.querySelector("#emi_table tbody");
     tbody.innerHTML = "";
     yearly.forEach(y=>{
         tbody.innerHTML += `
         <tr>
           <td>${y.year}</td>
-          <td>₹${Number(y.interest).toFixed(0)}</td>
-          <td>₹${Number(y.principal).toFixed(0)}</td>
-          <td>₹${Number(y.balance).toFixed(0)}</td>
+          <td>₹${y.interest.toFixed(0)}</td>
+          <td>₹${y.principal.toFixed(0)}</td>
+          <td>₹${y.balance.toFixed(0)}</td>
         </tr>`;
     });
 
     document.getElementById("emi_result").style.display = "block";
 }
 
-function exportEMICSV(){
-    if(emiData.length === 0){ alert("Calculate EMI first!"); return; }
 
-    let csv = "Month,Interest,Principal,Balance\n";
-    emiData.forEach(r=>{
-        csv += `${r.month},${r.interest.toFixed(2)},${r.principal.toFixed(2)},${r.balance.toFixed(2)}\n`;
-    });
-
-    let blob = new Blob([csv], {type:"text/csv"});
-    let a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "emi_amortization.csv";
-    a.click();
-}
 
 /* =======================================================
    SOLAR SAVING CALCULATOR
-   ====================================================== */
+=======================================================*/
 
 function calcSolar(){
-    const bill  = Number(document.getElementById("sol_bill").value) || 0;
-    const units = Number(document.getElementById("sol_units").value) || 0;
-    const area  = Number(document.getElementById("sol_area").value) || 0;
-    const dir   = Number(document.getElementById("sol_dir").value) || 1;
 
-    if (bill <= 0 || units <= 0) {
-      alert("Enter valid bill and units.");
-      return;
-    }
+    const bill  = Number(document.getElementById("sol_bill").value);
+    const units = Number(document.getElementById("sol_units").value);
+    const area  = Number(document.getElementById("sol_area").value);
+    const dir   = Number(document.getElementById("sol_dir").value);
 
     const tariff = bill / units;
-    const kw = area / 100;              // simple assumption: 100 sqft = 1 kW
+    const kw = area / 100;
     const panels = Math.ceil(kw * 1000 / 540);
 
-    const monthlyGen = kw * 4.5 * 30 * dir; // simplified generation
+    const monthlyGen = kw * 4.5 * 30 * dir;
+
     const usable = Math.min(monthlyGen, units);
     const monthlySaving = usable * tariff;
     const yearlySaving = monthlySaving * 12;
+
     const newBill = bill - monthlySaving;
-    const percent = bill > 0 ? (monthlySaving / bill) * 100 : 0;
+    const percent = (monthlySaving / bill) * 100;
 
     document.getElementById("sol_kw").innerText = kw.toFixed(2)+" kW";
     document.getElementById("sol_panels").innerText = panels;
@@ -1438,17 +1423,20 @@ function calcSolar(){
           </tr>
         `;
 
-        currentGen *= 0.995; // small degradation
+        currentGen *= 0.995;
     }
 
     document.getElementById("sol_result").style.display = "block";
 }
+
 </script>
 
-</body>
-</html>
-<!--cali end  -->
+<!-- ========================== -->
+<!--   CALCULATORS END          -->
+<!-- ========================== -->
 
+
+   
     <!-- FAQ Section -->
     <section class="section-padding bg-light" id="faq">
         <div class="container">
