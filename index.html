@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- FAVICON -->
+<link rel="icon" type="image/png" href="img/finallogo.png">
+<link rel="apple-touch-icon" href="img/finallogo.png">
+<link rel="shortcut icon" href="img/finallogo.png">
+
     <!--seo tagg  -->
 <meta name="google-site-verification" content="m-IAkf0xIbI3R-Kfr8Yc1ulFKjXHLgtMYjVtfCp1SQo" />
 
@@ -90,79 +95,76 @@
       z-index: -2;
     }
 
-    /* ======================= NAVBAR ======================= */
-    .baba-navbar {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 5%;
-      z-index: 10;
-      background: rgba(10,25,47,0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .baba-logo { display: flex; flex-direction: column; align-items: flex-start; }
-    .baba-logo-text {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--light);
-      text-shadow: 0 0 10px var(--primary-glow);
-      line-height: 1;
-    }
-    .baba-logo-text span {
-      color: var(--primary);
-      position: relative;
-    }
-    .baba-logo-text span::after {
-      content: '☀️';
-      position: absolute;
-      top: -5px;
-      right: -25px;
-      font-size: 20px;
-      animation: baba-spin 10s linear infinite;
-    }
-    @keyframes baba-spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .baba-logo-line {
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      margin-top: 5px;
-      border-radius: 2px;
-    }
-    .baba-nav-links { display: flex; gap: 35px; }
-    .baba-nav-link {
-      color: var(--light);
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      padding: 8px 0;
-      transition: all 0.3s ease;
-    }
-    .baba-nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 0; height: 2px;
-      background: var(--primary);
-      transition: width 0.3s ease;
-    }
-    .baba-nav-link:hover { color: var(--primary); }
-    .baba-nav-link:hover::after { width: 100%; }
+  /* ======================= NAVBAR ======================= */
+.baba-navbar {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 5%;
+  z-index: 10;
 
-    .baba-menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--light);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+  /* 🔥 FIXED: Perfect clean navbar over video */
+/* background: rgba(0,0,0,0.55); */
+backdrop-filter: none;
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: none !important;      /* remove the white line */
+}
+
+/* Logo */
+.baba-logo { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
+}
+
+.baba-logo-img {
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Navigation Links */
+.baba-nav-links { 
+  display: flex; 
+  gap: 35px; 
+}
+
+.baba-nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.baba-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  width: 0; 
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.baba-nav-link:hover { color: var(--primary); }
+.baba-nav-link:hover::after { width: 100%; }
+
+/* Mobile Menu Button */
+.baba-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
     /* ======================= HERO CONTENT ======================= */
     .baba-hero-content {
@@ -412,6 +414,9 @@
     <a href="#about" class="baba-mobile-nav-link">About Us</a>
     <a href="#contact" class="baba-mobile-nav-link">Enquiry</a>
     <a href="#footer" class="baba-mobile-nav-link">Contact</a>
+    <a href="#footer" class="baba-mobile-nav-link">Solar Calculator</a>
+
+
   </div>
 
   <div class="baba-cursor-particles" id="babaCursorParticles"></div>
@@ -430,10 +435,14 @@
     </div>
 
     <nav class="baba-navbar">
-      <div class="baba-logo">
+        <a class="navbar-brand" href="#">
+    <img src="img/finallogo.png" style="height:70px;object-fit:contain;">
+</a>
+
+      <!-- <div class="baba-logo">
         <div class="baba-logo-text">Baba <span>Solar</span></div>
         <div class="baba-logo-line"></div>
-      </div>
+      </div> -->
       <div class="baba-nav-links">
         <a href="" class="baba-nav-link">Home</a>
         <a href="#service" class="baba-nav-link">Services</a>
@@ -441,6 +450,8 @@
         <a href="#about" class="baba-nav-link">About Us</a>
         <a href="#contact" class="baba-nav-link">Enquiry</a>
         <a href="#footer" class="baba-nav-link">Contact</a>
+        <a href="#footer" class="baba-nav-link">Solar Calculator</a>
+
       </div>
       <button class="baba-menu-toggle" id="babaMenuToggle"><i class="fas fa-bars"></i></button>
     </nav>
@@ -632,9 +643,6 @@
 
 
    
-
-
-    
 <!-- About Start -->
 <section id="about" class="baba-hero-section">
 <div class="container-fluid py-5">
@@ -649,9 +657,6 @@
                     </div>
                     <div class="col-6 wow fadeIn" data-wow-delay="0.3s">
                         <img class="img-fluid" src="img/IMG_3196.jpg" alt="Solar Energy Solutions">
-                        <!-- <div class="h-25 d-flex align-items-center text-center bg-primary px-4">
-                            <h5 class="text-white lh-base mb-0">Trusted Solar Experts Since 2010</h5>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -684,17 +689,48 @@
                     color:#ffffff;
                 ">
                     <strong style="color:#0d6efd; font-size:18px;">Baba Solar Franchise Program</strong><br><br>
-    Baba Solar is expanding its trusted solar network across Maharashtra through its 
-    <strong>exclusive franchise model</strong>. If you want to start a profitable solar business in your city, 
-    we provide complete support — from business setup to long-term operations.<br><br>
+                    Baba Solar is expanding its trusted solar network across Maharashtra through its 
+                    <strong>exclusive franchise model</strong>. If you want to start a profitable solar business in your city, 
+                    we provide complete support — from business setup to long-term operations.<br><br>
 
-    Our franchise partners get:  
-    <strong>brand licensing, technical training, installation assistance, dealership pricing,
-    marketing guidance, and lifetime support</strong> for seamless growth. <br><br>
+                    Our franchise partners get:  
+                    <strong>brand licensing, technical training, installation assistance, dealership pricing,
+                    marketing guidance, and lifetime support</strong> for seamless growth. <br><br>
 
-    Build a high-earning and future-ready business with one of the fastest-growing solar companies.  
-    <strong>Partner with Baba Solar today.</strong>
-</p>
+                    Build a high-earning and future-ready business with one of the fastest-growing solar companies.  
+                    <strong>Partner with Baba Solar today.</strong>
+                </p>
+
+                <!-- ⭐ UNIQUE OWNER SECTION ⭐ -->
+                <div class="owner-box mb-5 p-3" style="
+                    background:#f8f9fa;
+                    border-radius:12px;
+                    border:1px solid #e2e2e2;
+                    display:flex;
+                    align-items:center;
+                    gap:18px;
+                    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+                ">
+                    <div>
+                        <!-- OWNER IMAGE -->
+                        <img src="img/owner.jpg" alt="Owner" style="
+                            width:110px;
+                            height:110px;
+                            object-fit:cover;
+                            border-radius:50%;
+                            border:3px solid #0d6efd;
+                        ">
+                    </div>
+
+                    <div>
+                        <h4 style="margin:0; color:#0d6efd;">Mr. ___(Owner Name)___</h4>
+                        <p style="margin:0; font-size:14px; color:#444;">Founder & Owner, Baba Solar</p>
+                        <p style="margin-top:8px; font-style:italic; color:#666; font-size:14px;">
+                            “Our mission is to bring clean, affordable energy to every home in Maharashtra.”
+                        </p>
+                    </div>
+                </div>
+                <!-- END OWNER SECTION -->
 
                 <div class="row g-3">
                     <div class="col-sm-6">
@@ -717,8 +753,7 @@
                     </a>
 
                     <a class="btn btn-outline-primary btn-square border-2 me-2" 
-                        href="https://www.instagram.com/babaagrotraders?igsh=MXFyZ2hkZ3c5enJtOA==" 
-                        target="_blank">
+                        href="#" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
 
@@ -729,8 +764,7 @@
                     </a>
 
                     <a class="btn btn-outline-primary btn-square border-2"
-                        href="https://www.instagram.com/babaagrotraders?igsh=MXFyZ2hkZ3c5enJtOA==" 
-                        target="_blank">
+                        href="#" target="_blank">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
 
@@ -743,6 +777,8 @@
 </section>
 <!-- About End -->
 
+
+    
 
 
 <!-- Service Start -->
