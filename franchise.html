@@ -210,7 +210,9 @@
 
   <section class="apply-box">
     <h2>Apply for Franchise</h2>
-    <form onsubmit="event.preventDefault();alert('Demo only — Form submitted!')">
+    <form onsubmit="sendToWhatsApp(event)">
+
+    <!-- <form onsubmit="event.preventDefault();alert('Demo only — Form submitted!')"> -->
       <div class="form-grid">
         <input required placeholder="Full Name">
         <input required placeholder="Phone Number">
@@ -231,7 +233,43 @@
 
 </div>
 
-<script>document.getElementById('yr').textContent = new Date().getFullYear()</script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear()
+
+function sendToWhatsApp(event){
+  event.preventDefault();
+
+  // 👉 WhatsApp number ( +91 ke bina )
+  const whatsappNumber = "917507811401";
+
+  const form = event.target;
+  const name = form.querySelector('input[placeholder="Full Name"]').value;
+  const phone = form.querySelector('input[placeholder="Phone Number"]').value;
+  const email = form.querySelector('input[placeholder="Email Address"]').value;
+  const city = form.querySelector('input[placeholder="City / Region"]').value;
+  const message = form.querySelector('textarea').value;
+
+  const text =
+`Baba Solar Franchise Application
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+City / Region: ${city}
+
+Background / Experience:
+${message}`;
+
+  window.open(
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`,
+    "_blank"
+  );
+}
+
+
+
+
+
+</script>
 
 </body>
 </html>
